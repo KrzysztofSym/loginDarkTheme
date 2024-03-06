@@ -14,8 +14,8 @@
     --clr-bg-main: #ddf1f1;
     --clr-bg-pri: #a9e5e7;
     --clr-bg-sec: #f3fafa;
-    --clr-acc-main: #00bea6;
-    --clr-acc-pri: #009885;
+    --clr-acc-main: #4484f5;
+    --clr-acc-pri: #366ac4;
     --clr-acc-sec: #33cbb8;
     --clr-acc-thi: #d80000;
     --clr-acc-four: #ad0000;
@@ -44,8 +44,8 @@ html {
 body {
     font-family: var(--main-ff);
     font-size: var(--p-fs);
-    background: var(--clr-bg-main);
-    color: var(--clr-text-main);
+    background: #000;
+    color: #eee;
     width: 100%;
     min-height: 100vh;
 }   
@@ -108,10 +108,14 @@ img {
 /*===== BUTTONS =====*/
 
 .btn {
-    display: inline-block;
-    background-color:  #fff;
-    color: var(--clr-text-main);
-    padding: .5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    gap: 1rem;
+    background-color:  var(--clr-acc-main);
+    height: 3rem;
     font-weight: 600;
     border: none;
     border-radius: 5px;
@@ -119,9 +123,20 @@ img {
     white-space: nowrap;
     transition: .2s;
 }
+
+.btn:last-of-type {
+    background-color: #fff;
+    color: var(--clr-text-main);
+    margin-bottom: 2rem;
+    
+}
+
+.btn:first-of-type:hover {
+    background-color: var(--clr-acc-pri);
+}
   
 .btn:hover {
-    box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
+    box-shadow: 0 10px 36px rgba(255, 255, 255, .15);
 }
 
 .btn:active {
@@ -137,51 +152,88 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 800px;
     width: 90%;
-    background-color: #1a1a1a;
+    background-image: url("https://images.unsplash.com/photo-1545486332-ae6c3bf92201?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    padding: .5rem;
     position: relative;
     display: flex;
     justify-content: center;
+    gap: 2rem;
     align-items: center;
     animation: scaleUp 1s ease-in-out;
     transform-origin: center center;
-    box-shadow: 0px 8px 30px -10px var(--clr-acc-sec);
+    border-radius: 1rem;
 }
 
 .card {
     width: 400px;
-    min-width: 300px;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.card:first-child {
+    background: rgba( 0, 0, 0, 0.55 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    overflow: hidden;
+
+}
+
+.card:last-child {
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+.card h4 {
+    margin: 2rem 0 1rem;
+    font-weight: 500;
+}
+
+.btn svg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
 }
 
 .hr-text {
     border: 0;
-    line-height: 1em;
+    line-height: 1.5rem;
+    content: attr(data-content);
+    color: #fff;
     position: relative;
     text-align: center;
-    height: 1.5em;
+    height: 1.5rem;
     font-size: 14px;
-    margin: 30px 15px;
+    margin: 2rem 0 1rem;
   }
-  
-  .hr-text::before {
-      content: "";
-      background: linear-gradient(to right, transparent, white, transparent);
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      height: 1px;
-  }
-  
-  .hr-text::after {
-      content: attr(data-content);
-      position: relative;
-      padding: 0 7px;
-      line-height: 1.5em;
-      color: #fff;
-      background-color: #1a1a1a;
-  }
+
+.hr-text::before {
+    content: "";
+    background: linear-gradient(to right, transparent, white);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: calc(50% - 1.5rem);
+    height: 1px;
+}
+
+h3 {
+    margin-bottom: 1rem;
+}
+
+.hr-text::after {
+    content: '';
+    background: linear-gradient(to right, white, transparent);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: calc(50% - 1.5rem);
+    height: 1px;
+}
 
 .card div input,
 .card div textarea {
@@ -191,5 +243,62 @@ body {
     border-radius: .3rem;
     background: transparent;
     padding: .8rem;
+    height: 3rem;
+    margin-bottom: 1rem;
 }
 
+.mail {
+    position: relative;
+}
+
+.mail > span {
+    color: red;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transform: translateX(-180px);
+    transition: .2s;
+}
+
+.mail > span.active {
+    transform: translateX(0);
+    width: 22ch;
+    white-space: nowrap;
+    animation: typing 1s steps(22), ease-in-out .2s;
+    overflow: hidden;
+    
+}
+
+.container > p {
+    margin-bottom: 2rem;
+}
+
+.container p > span {
+    color: var(--clr-acc-main);
+    cursor: pointer;
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        min-width: 350px;
+        gap: 0
+    }
+
+    .card h4 {
+        margin-top: 1rem;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+}
